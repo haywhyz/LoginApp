@@ -1,19 +1,25 @@
-
+# Use a lightweight base image
 FROM golang:1.17-alpine
 
+# Set the working directory inside the container
+WORKDIR /app
 
-WORKDIR /app/backend
+# Copy go.mod and go.sum files to the container
+COPY go.mod ./
+COPY go.sum ./
 
-
-COPY backend/main.go ./
-COPY backend/go.mod ./
-COPY backend/go.sum ./
-
-
+# Download Go module dependencies
 RUN go mod download
 
-RUN go build main.go
+# Copy all source files to the container
+COPY . ./
+
+# Build the Go application
+RUN go build -o main
+
+# Expose port 5000 for the application
 EXPOSE 5000
 
-
+# Command to run the application
 CMD ["./main"]
+
