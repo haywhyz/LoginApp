@@ -12,14 +12,27 @@ go get -u gorm.io/driver/mysql
 go get -u github.com/joho/godotenv
 
 
+step3 
+go run main.go
 
+/api/register 
 
+{
+    "username":"user",
+    "password":"pass"
+}
+
+/api/login
+
+{
+    "username":"user",
+    "password":"pass"
+}
 
 
 # frontend
 npm install -g @vue/cli
 
+vue create vue-frontend
 npm install axios
-npm install axios
-vue generate Login
 vue add component Login
