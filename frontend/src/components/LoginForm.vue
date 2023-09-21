@@ -17,6 +17,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data() {
     return {
@@ -30,8 +32,8 @@ export default {
   methods: {
     async login() {
       try {
-        const response = await this.$axios.post(
-          "http://localhost:5000/api/login",
+        const response = await axios.post(
+          `${process.env.VUE_APP_API_ENDPOINT}/api/login`,
           this.formData
         );
         if (response.status === 200) {
