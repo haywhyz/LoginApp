@@ -60,7 +60,7 @@ func main() {
 	}
 
 	// Start the server
-	port := "5000"
+	port := "4000"
 	r.Run(":" + port)
 }
 

@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: ./backend  # Path to the build context (directory containing Dockerfile)
+      dockerfile: dockerfile  # Path to the Dockerfile for the backend service
+    container_name: backend-container
+    ports:
+      - "4000:4000"
+    # env_file:
+    #   - /backend/.env.production  # Load environment variables for the backend service
+    # depends_on:
+      # - database  # Specify the name of your database service if applicable
+
+  frontend:
+    build:
+      context: ./frontend  # Path to the build context (directory containing Dockerfile)
+      dockerfile: dockerfile  # Path to the Dockerfile for the frontend service
+    container_name: frontend-container
+    ports:
+      - "8080:8080"
+    # env_file:
+    #   - /frontend/.env.example  # Load environment variables for the frontend service
+    depends_on:
+      - backend  
